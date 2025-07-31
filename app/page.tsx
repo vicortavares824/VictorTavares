@@ -366,9 +366,9 @@ export default function Portfolio() {
         
         {/* Navigation with Southern Gothic Green feel */}
         <nav className={`fixed top-0 w-full backdrop-blur-md border-b z-50 ${themeClasses.navBg}`}>
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
+          <div className="container mx-auto px-4 py-2 md:py-3 lg:py-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
+              <div className="flex items-center space-x-3 md:space-x-2">
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg border ${themeClasses.logoBg}`}
                 >
@@ -377,23 +377,27 @@ export default function Portfolio() {
                 <span className={`font-semibold text-lg ${themeClasses.logoText}`}>Victor Tavares</span>
               </div>
 
-              <div className="hidden md:flex items-center space-x-4">
-                <a href="#home" className={`${themeClasses.navLink} transition-colors font-medium`}>
-                  Home
-                </a>
-                <a href="#projects" className={`${themeClasses.navLink} transition-colors font-medium`}>
-                  Projetos
-                </a>
-                <a href="#skills" className={`${themeClasses.navLink} transition-colors font-medium`}>
-                  Skills
-                </a>
+              <div className="flex-1 flex justify-center md:justify-center mt-2 md:mt-0">
+                <div className="flex items-center space-x-6 md:space-x-8">
+                  <a href="#home" className={`${themeClasses.navLink} transition-colors font-medium text-base md:text-lg`}>
+                    Home
+                  </a>
+                  <a href="#projects" className={`${themeClasses.navLink} transition-colors font-medium text-base md:text-lg`}>
+                    Projetos
+                  </a>
+                  <a href="#skills" className={`${themeClasses.navLink} transition-colors font-medium text-base md:text-lg`}>
+                    Skills
+                  </a>
+                </div>
               </div>
 
-              <Button variant="ghost" size="icon" onClick={toggleTheme} className={`border ${themeClasses.buttonIcon}`}>
-                {currentTheme === "southOfMidnightDark" && <Moon className="h-5 w-5" />}
-                {currentTheme === "southOfMidnightLight" && <Sun className="h-5 w-5" />}
-                {currentTheme === "arcane" && <Zap className="h-5 w-5" />}
-              </Button>
+              <div className="flex items-center justify-end">
+                <Button variant="ghost" size="icon" onClick={toggleTheme} className={`border ${themeClasses.buttonIcon}`}>
+                  {currentTheme === "southOfMidnightDark" && <Moon className="h-5 w-5" />}
+                  {currentTheme === "southOfMidnightLight" && <Sun className="h-5 w-5" />}
+                  {currentTheme === "arcane" && <Zap className="h-5 w-5" />}
+                </Button>
+              </div>
             </div>
           </div>
         </nav>
