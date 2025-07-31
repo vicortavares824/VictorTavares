@@ -17,6 +17,7 @@ interface Project {
   features?: string[]
   category: string
   icon?: string
+  video?: string
 }
 
 export default function Portfolio() {
@@ -86,6 +87,7 @@ export default function Portfolio() {
       title: "Tamag Vans",
       description: "Sistema de gerenciamento para empresa de vans",
       image: "/placeholder.svg?height=300&width=400&text=Tamag+Vans",
+      video: "/video-tamag.mp4",
       link: "https://tamagvans.rf.gd",
       detailedDescription:
         "Sistema completo de gerenciamento para empresa de transporte de vans, incluindo controle de rotas, passageiros, horários e pagamentos. Interface moderna e responsiva.",
@@ -97,8 +99,8 @@ export default function Portfolio() {
     {
       title: "Agendei",
       description: "App de agendamento médico",
-      image: "/placeholder.svg?height=300&width=400&text=Medical+App",
-      link: "https://app-de-agendamento-medico.vercel.app",
+      image: "/agendei.png?height=300&width=400&text=Medical+App",
+      link: "https://app-de-agendamento-medico.vercel.app/",
       detailedDescription:
         "Aplicação web para agendamento de consultas médicas com sistema de notificações, controle de horários e gestão de pacientes. Interface intuitiva e moderna.",
       technologies: ["React", "Node.js", "MySQL", "Bootstrap"],
@@ -110,7 +112,8 @@ export default function Portfolio() {
       title: "CineStream",
       description: "Site de streaming de filmes",
       image: "/placeholder.svg?height=300&width=400&text=Movie+App",
-      link: "https://app-de-streaming-de-filmes.vercel.app",
+      video: "/video-cinestream.mp4",
+      link: "https://cinestream-six.vercel.app/",
       detailedDescription:
         "Aplicação web para streaming de filmes com sistema de recomendações, controle de playlists e gestão de usuários. Interface intuitiva e moderna.",
       technologies: ["React", "Node.js", "Next.js", "API REST"],
@@ -121,8 +124,8 @@ export default function Portfolio() {
     {
       title: "AppCineStream",
       description: "Aplicativo mobile de streaming de filmes",
-      image: "/placeholder.svg?height=300&width=400&text=Movie+App",
-      link: "https://app-de-streaming-de-filmes.vercel.app",
+      image: "/appCineStream.png?height=300&width=400&text=Movie+App",
+      link: "https://github.com/vicortavares824/appCineStream",
       detailedDescription:
         "Aplicativo mobile desenvolvido com React Native e Expo Go para streaming de filmes. Permite recomendações personalizadas, criação de playlists, gestão de usuários e reprodução otimizada para dispositivos móveis. Interface moderna e intuitiva, focada na experiência do usuário em smartphones.",
       technologies: ["React Native", "Expo Go", "Node.js", "API REST"],
@@ -399,8 +402,8 @@ export default function Portfolio() {
         <section id="home" className="min-h-screen flex items-center justify-center pt-20">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <div className="w-48 h-48 mx-auto mb-8 relative">
+              <div className="mb-4 md:mb-8">
+                <div className="w-24 h-24 md:w-48 md:h-48 mx-auto relative">
                   <div
                     className={`absolute inset-0 rounded-full animate-pulse shadow-2xl ${themeClasses.logoBg}`}
                   ></div>
@@ -436,11 +439,11 @@ export default function Portfolio() {
                 Oi, eu sou o Victor. Prazer em conhecê-lo.
               </h2>
               <p className={`text-lg leading-relaxed ${themeClasses.aboutParagraph}`}>
-                Desde o início da minha jornada como Desenvolvedor na faculdade, tenho realizado trabalhos remotos para
-                testes, consultado cursos e executado projetos com
-                C/C++/HTML5/CSS/BOOTSTRAP/SASS/JAVASCRIPT/JAVA/PHP/MYSQL/jQuery/NodeJS/React/React Native, tanto em
-                âmbito pessoal quanto na faculdade. Mantenho-me confiante e tranquilo, alimentado por uma curiosidade
-                natural, e estou sempre em busca de aprimorar minhas habilidades constantemente.
+                Desde o início da minha jornada como Desenvolvedor na faculdade, tenho realizado trabalhos remotos, consultado cursos e executado projetos pessoais e acadêmicos.<br />
+                <br />
+                Tecnologias: <span className="break-words">C/C++, HTML5, CSS, Bootstrap, Sass, JavaScript, Java, PHP, MySQL, jQuery, NodeJS, React, React Native</span>.<br />
+                <br />
+                Mantenho-me confiante e tranquilo, alimentado por uma curiosidade natural, e estou sempre em busca de aprimorar minhas habilidades constantemente.
               </p>
             </div>
           </div>
@@ -654,13 +657,24 @@ export default function Portfolio() {
               className={`backdrop-blur-md border-2 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl ${themeClasses.modalBg}`}
             >
               <div className="relative">
-                {/* Header com imagem */}
+                {/* Header com imagem (sempre exibe imagem, nunca vídeo) */}
                 <div className="relative h-64 overflow-hidden rounded-t-2xl">
-                  <img
-                    src={selectedProject.image || "/placeholder.svg"}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
+                  {selectedProject.video ? (
+                    <video
+                      src={selectedProject.video}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={selectedProject.image || "/placeholder.svg"}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                   <button
                     onClick={closeProjectModal}
